@@ -72,7 +72,7 @@
       "metadata": {
         "description": "Availability set."
       }
-    },    
+    },
     "useAVSet": {
       "type": "bool",
       "defaultValue": false,
@@ -86,12 +86,6 @@
         "description": "Name of the network interface."
       }
     },
-    "dataDisksObj": {
-      "type": "object",
-      "metadata": {
-        "description": "Information about the data disks that the VM should have."
-      }
-    },
     "osType": {
       "type": "string",
       "metadata": {
@@ -101,8 +95,8 @@
   },
   "variables": {
     "availableAVSetObj": {
-        "true": "[parameters('avSetObj')]",
-        "false": null
+      "true": "[parameters('avSetObj')]",
+      "false": null
     },
     "internalAVSetObj": "[variables('availableAVSetObj')[toLower(string(parameters('useAVSet')))]]",
     "csExtension": {
@@ -124,11 +118,9 @@
       "vmSize": "[parameters('vmSize')]"
     },
     "networkProfile": {
-      "networkInterfaces": [
-        {
-          "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('nicName'))]"
-        }
-      ]
+      "networkInterfaces": [{
+        "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('nicName'))]"
+      }]
     },
     "availableProperties": {
       "image": {
@@ -141,8 +133,7 @@
         },
         "storageProfile": {
           "imageReference": "[parameters('imageReference')]",
-          "osDisk": "[parameters('osDisk')]",
-          "dataDisks": "[parameters('dataDisksObj').dataDisks]"
+          "osDisk": "[parameters('osDisk')]"
         },
         "networkProfile": "[variables('networkProfile')]"
       },
@@ -156,8 +147,7 @@
         },
         "storageProfile": {
           "imageReference": "[parameters('imageReference')]",
-          "osDisk": "[parameters('osDisk')]",
-          "dataDisks": "[parameters('dataDisksObj').dataDisks]"
+          "osDisk": "[parameters('osDisk')]"
         },
         "networkProfile": "[variables('networkProfile')]"
       },
@@ -165,16 +155,14 @@
         "availabilitySet": "[variables('internalAVSetObj')]",
         "hardwareProfile": "[variables('hardwareProfile')]",
         "storageProfile": {
-          "osDisk": "[parameters('osDisk')]",
-          "dataDisks": "[parameters('dataDisksObj').dataDisks]"
+          "osDisk": "[parameters('osDisk')]"
         },
         "networkProfile": "[variables('networkProfile')]"
       }
     },
     "internalProperties": "[variables('availableProperties')[parameters('osDiskType')]]"
   },
-  "resources": [
-    {
+  "resources": [{
       "type": "Microsoft.Compute/virtualMachines",
       "name": "[parameters('vmName')]",
       "apiVersion": "2017-03-30",
