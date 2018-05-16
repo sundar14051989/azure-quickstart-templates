@@ -29,8 +29,8 @@
     "sapSystemSize": {
       "type": "string",
       "allowedValues": [
-        "Demo",
         "Small < 30.000 SAPS",
+        "Demo",
         "Medium < 70.000 SAPS",
         "Large < 180.000 SAPS",
         "X-Large < 250.000 SAPS"
@@ -748,11 +748,7 @@
           },
           "dataDisksObj": {
             "value": {
-              "dataDisks": [{
-                "lun": 0,
-                "createOption": "Empty",
-                "diskSizeGB": "128"
-              }]
+              "dataDisks": []
             }
           },
           "osType": {
@@ -981,15 +977,7 @@
           },
           "dataDisksObj": {
             "value": {
-              "copy": [{
-                "name": "dataDisks",
-                "count": "[length(variables('dbvmDataDisks'))]",
-                "input": {
-                  "lun": "[copyIndex('dataDisks')]",
-                  "createOption": "Empty",
-                  "diskSizeGB": "[variables('dbvmDataDisks')[copyIndex('dataDisks')].size]"
-                }
-              }]
+              "dataDisks": []
             }
           },
           "osType": {
@@ -1169,11 +1157,7 @@
           },
           "dataDisksObj": {
             "value": {
-              "dataDisks": [{
-                "lun": 0,
-                "createOption": "Empty",
-                "diskSizeGB": "128"
-              }]
+              "dataDisks": []
             }
           },
           "osType": {
