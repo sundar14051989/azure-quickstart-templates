@@ -29,14 +29,14 @@
     },
     "osDiskType": {
       "type": "string",
-      "allowedValues": [ "image", "userImage", "osdisk" ],
+      "allowedValues": ["image", "userImage", "osdisk"],
       "metadata": {
         "description": "The type of OS disk."
       }
     },
     "osType": {
       "type": "string",
-      "allowedValues": [ "Windows", "Linux" ],
+      "allowedValues": ["Windows", "Linux"],
       "metadata": {
         "description": "The type of the operating system you want to deploy."
       }
@@ -64,7 +64,7 @@
   },
   "variables": {
     "osDiskCaching": "ReadWrite",
-    "osDiskParts": {      
+    "osDiskParts": {
       "image": {
         "imageReference": {
           "publisher": "[parameters('imagePublisher')]",
@@ -75,10 +75,7 @@
         "osDisk": {
           "name": "[concat(parameters('vmName'), '-osdisk')]",
           "caching": "[variables('osDiskCaching')]",
-          "createOption": "FromImage",
-          "managedDisk": {
-            "storageAccountType": "[parameters('storageType')]"
-          }
+          "createOption": "FromImage"
         }
       },
       "userImage": {
@@ -88,10 +85,7 @@
         "osDisk": {
           "name": "[concat(parameters('vmName'), '-osdisk')]",
           "caching": "[variables('osDiskCaching')]",
-          "createOption": "FromImage",
-          "managedDisk": {
-            "storageAccountType": "[parameters('storageType')]"
-          }
+          "createOption": "FromImage"
         }
       },
       "osdisk": {
@@ -100,10 +94,7 @@
           "name": "[concat(parameters('vmName'), '-osdisk')]",
           "osType": "[parameters('osType')]",
           "caching": "[variables('osDiskCaching')]",
-          "createOption": "Attach",
-          "managedDisk": {
-            "id": "[parameters('managedDiskId')]"
-          }
+          "createOption": "Attach"
         }
       }
     }
