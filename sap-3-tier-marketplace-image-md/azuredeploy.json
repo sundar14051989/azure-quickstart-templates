@@ -172,11 +172,9 @@
         "Not HA": {
           "dbserversize": "Standard_DS12_v2",
           "dbservercount": 1,
-          "dbserverdisks": [
-            {
-              "size": 128
-            }
-          ],
+          "dbserverdisks": [{
+            "size": 128
+          }],
           "ascsserversize": "Standard_DS2_v2",
           "ascsservercount": 1,
           "diserversize": "Standard_DS2_v2",
@@ -185,11 +183,7 @@
         "HA": {
           "dbserversize": "Standard_DS12_v2",
           "dbservercount": 2,
-          "dbserverdisks": [
-            {
-              "size": 128
-            }
-          ],
+          "dbserverdisks": [],
           "ascsserversize": "Standard_DS2_v2",
           "ascsservercount": 2,
           "diserversize": "Standard_DS2_v2",
@@ -200,8 +194,7 @@
         "Not HA": {
           "dbserversize": "Standard_DS13_v2",
           "dbservercount": 1,
-          "dbserverdisks": [
-            {
+          "dbserverdisks": [{
               "size": 512
             },
             {
@@ -225,23 +218,7 @@
         "HA": {
           "dbserversize": "Standard_DS13_v2",
           "dbservercount": 2,
-          "dbserverdisks": [
-            {
-              "size": 512
-            },
-            {
-              "size": 512
-            },
-            {
-              "size": 512
-            },
-            {
-              "size": 512
-            },
-            {
-              "size": 512
-            }
-          ],
+          "dbserverdisks": [],
           "ascsserversize": "Standard_DS11_v2",
           "ascsservercount": 2,
           "diserversize": "Standard_DS13_v2",
@@ -252,8 +229,7 @@
         "Not HA": {
           "dbserversize": "Standard_DS14_v2",
           "dbservercount": 1,
-          "dbserverdisks": [
-            {
+          "dbserverdisks": [{
               "size": 512
             },
             {
@@ -283,8 +259,7 @@
         "HA": {
           "dbserversize": "Standard_DS14_v2",
           "dbservercount": 2,
-          "dbserverdisks": [
-            {
+          "dbserverdisks": [{
               "size": 512
             },
             {
@@ -316,8 +291,7 @@
         "Not HA": {
           "dbserversize": "Standard_GS4",
           "dbservercount": 1,
-          "dbserverdisks": [
-            {
+          "dbserverdisks": [{
               "size": 1023
             },
             {
@@ -344,8 +318,7 @@
         "HA": {
           "dbserversize": "Standard_GS4",
           "dbservercount": 2,
-          "dbserverdisks": [
-            {
+          "dbserverdisks": [{
               "size": 1023
             },
             {
@@ -374,8 +347,7 @@
         "Not HA": {
           "dbserversize": "Standard_GS5",
           "dbservercount": 1,
-          "dbserverdisks": [
-            {
+          "dbserverdisks": [{
               "size": 1023
             },
             {
@@ -405,8 +377,7 @@
         "HA": {
           "dbserversize": "Standard_GS5",
           "dbservercount": 2,
-          "dbserverdisks": [
-            {
+          "dbserverdisks": [{
               "size": 1023
             },
             {
@@ -479,8 +450,7 @@
     "internalStackType": "ABAP+JAVA",
     "internalDbType": "SQL"
   },
-  "resources": [
-    {
+  "resources": [{
       "apiVersion": "2017-05-10",
       "name": "[variables('nestedDeploymentNameNSG')]",
       "type": "Microsoft.Resources/deployments",
@@ -662,17 +632,15 @@
       ],
       "location": "[resourceGroup().location]",
       "properties": {
-        "ipConfigurations": [
-          {
-            "name": "ipconfig1",
-            "properties": {
-              "privateIPAllocationMethod": "Dynamic",
-              "publicIPAddress": "[reference(concat(variables('nestedDeploymentNameNICASCS'), '-', copyIndex())).outputs.selectedConfiguration.value.publicIPAddress]",
-              "subnet": "[reference(concat(variables('nestedDeploymentNameNICASCS'), '-', copyIndex())).outputs.selectedConfiguration.value.subnet]",
-              "loadBalancerBackendAddressPools": "[reference(variables('nestedDeploymentNameLBASCS')).outputs.nicBackAddressPools.value]"
-            }
+        "ipConfigurations": [{
+          "name": "ipconfig1",
+          "properties": {
+            "privateIPAllocationMethod": "Dynamic",
+            "publicIPAddress": "[reference(concat(variables('nestedDeploymentNameNICASCS'), '-', copyIndex())).outputs.selectedConfiguration.value.publicIPAddress]",
+            "subnet": "[reference(concat(variables('nestedDeploymentNameNICASCS'), '-', copyIndex())).outputs.selectedConfiguration.value.subnet]",
+            "loadBalancerBackendAddressPools": "[reference(variables('nestedDeploymentNameLBASCS')).outputs.nicBackAddressPools.value]"
           }
-        ]
+        }]
       }
     },
     {
@@ -780,13 +748,11 @@
           },
           "dataDisksObj": {
             "value": {
-              "dataDisks": [
-                {
-                  "lun": 0,
-                  "createOption": "Empty",
-                  "diskSizeGB": "128"
-                }
-              ]
+              "dataDisks": [{
+                "lun": 0,
+                "createOption": "Empty",
+                "diskSizeGB": "128"
+              }]
             }
           },
           "osType": {
@@ -900,16 +866,14 @@
       ],
       "location": "[resourceGroup().location]",
       "properties": {
-        "ipConfigurations": [
-          {
-            "name": "ipconfig1",
-            "properties": {
-              "privateIPAllocationMethod": "Dynamic",
-              "subnet": "[reference(concat(variables('nestedDeploymentNameNICDB'), '-', copyIndex())).outputs.selectedConfiguration.value.subnet]",
-              "loadBalancerBackendAddressPools": "[reference(variables('nestedDeploymentNameLBDB')).outputs.nicBackAddressPools.value]"
-            }
+        "ipConfigurations": [{
+          "name": "ipconfig1",
+          "properties": {
+            "privateIPAllocationMethod": "Dynamic",
+            "subnet": "[reference(concat(variables('nestedDeploymentNameNICDB'), '-', copyIndex())).outputs.selectedConfiguration.value.subnet]",
+            "loadBalancerBackendAddressPools": "[reference(variables('nestedDeploymentNameLBDB')).outputs.nicBackAddressPools.value]"
           }
-        ]
+        }]
       }
     },
     {
@@ -1017,17 +981,15 @@
           },
           "dataDisksObj": {
             "value": {
-              "copy": [
-                {
-                  "name": "dataDisks",
-                  "count": "[length(variables('dbvmDataDisks'))]",
-                  "input": {
-                    "lun": "[copyIndex('dataDisks')]",
-                    "createOption": "Empty",
-                    "diskSizeGB": "[variables('dbvmDataDisks')[copyIndex('dataDisks')].size]"
-                  }
+              "copy": [{
+                "name": "dataDisks",
+                "count": "[length(variables('dbvmDataDisks'))]",
+                "input": {
+                  "lun": "[copyIndex('dataDisks')]",
+                  "createOption": "Empty",
+                  "diskSizeGB": "[variables('dbvmDataDisks')[copyIndex('dataDisks')].size]"
                 }
-              ]
+              }]
             }
           },
           "osType": {
@@ -1093,15 +1055,13 @@
       },
       "location": "[resourceGroup().location]",
       "properties": {
-        "ipConfigurations": [
-          {
-            "name": "ipconfig1",
-            "properties": {
-              "privateIPAllocationMethod": "Dynamic",
-              "subnet": "[reference(concat(variables('nestedDeploymentNameNICDI'), '-', copyIndex())).outputs.selectedConfiguration.value.subnet]"
-            }
+        "ipConfigurations": [{
+          "name": "ipconfig1",
+          "properties": {
+            "privateIPAllocationMethod": "Dynamic",
+            "subnet": "[reference(concat(variables('nestedDeploymentNameNICDI'), '-', copyIndex())).outputs.selectedConfiguration.value.subnet]"
           }
-        ]
+        }]
       }
     },
     {
@@ -1209,13 +1169,11 @@
           },
           "dataDisksObj": {
             "value": {
-              "dataDisks": [
-                {
-                  "lun": 0,
-                  "createOption": "Empty",
-                  "diskSizeGB": "128"
-                }
-              ]
+              "dataDisks": [{
+                "lun": 0,
+                "createOption": "Empty",
+                "diskSizeGB": "128"
+              }]
             }
           },
           "osType": {
