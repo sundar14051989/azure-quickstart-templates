@@ -1,9 +1,9 @@
 # SAP NetWeaver 3-tier compatible template using a Marketplace image - MD
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fsundar14051989%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-md%2Fazuredeploy.json" target="_blank">
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fsundar14051989%2Fazure-quickstart-templates%2Ftest-deploy%2Fsap-3-tier-marketplace-image-md%2Fazuredeploy.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
-<a href="http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2Fsundar14051989%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-md%2Fazuredeploy.json" target="_blank">
+<a href="http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2Fsundar14051989%2Fazure-quickstart-templates%2Ftest-deploy%2Fsap-3-tier-marketplace-image-md%2Fazuredeploy.json" target="_blank">
     <img src="http://armviz.io/visualizebutton.png"/>
 </a>
 
@@ -12,11 +12,11 @@ This template uses Managed Disks.
 
 ## ASCS/SCS Internal Load Balancer ports
 
-* Windows specific ports 445, 5985
-* ASCS Ports (instance number 00): 3200, 3600, 3900,  8100, 50013, 50014, 50016
-* SCS Ports (instance number 01): 3201, 3301, 3901, 8101, 50113, 50114, 50116
-* ASCS ERS ports on Linux (instance number 02): 3302, 50213, 50214, 50216
-* SCS ERS ports on Linux (instance number 03): 3303, 50313, 50314, 50316
+- Windows specific ports 445, 5985
+- ASCS Ports (instance number 00): 3200, 3600, 3900, 8100, 50013, 50014, 50016
+- SCS Ports (instance number 01): 3201, 3301, 3901, 8101, 50113, 50114, 50116
+- ASCS ERS ports on Linux (instance number 02): 3302, 50213, 50214, 50216
+- SCS ERS ports on Linux (instance number 03): 3303, 50313, 50314, 50316
 
 ASCS/SCS Internal Load Balancer probe port: **62000**
 
@@ -24,7 +24,7 @@ ERS Internal Load Balancer probe port: **62102**
 
 ## DB Internal Load Balancer ports
 
-* DB Internal Load Balancer ports: **1433**
+- DB Internal Load Balancer ports: **1433**
 
 DB Internal Load Balancer probe port: **62504**
 
@@ -59,4 +59,4 @@ DB Internal Load Balancer probe port: **62504**
 		<td>2xGS5 DB Server (6xP30 1xP30) + 2xDS11_v2 ASCS/SCS (1xP10) + 10xDS14_v2 DI (1xP10)</td>
 		<td>1xGS5 DB Server (6xP30 1xP30) + 1xDS11_v2 ASCS/SCS (1xP10) + 10xDS14_v2 DI (1xP10)</td>
 	</tr>
-</table>				
+</table>
