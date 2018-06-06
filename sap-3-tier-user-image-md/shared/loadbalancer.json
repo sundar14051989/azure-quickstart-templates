@@ -61,7 +61,7 @@
             "metadata": {
                 "description": "The base URI where artifacts required by this template are located. When the template is deployed using the accompanying scripts, a private location in the subscription will be used and this value will be automatically generated."
             },
-            "defaultValue": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/sap-file-server-md/"
+            "defaultValue": "https://raw.githubusercontent.com/sundar14051989/azure-quickstart-templates/master/sap-file-server-md/"
         },
         "_artifactsLocationSasToken": {
             "type": "securestring",
@@ -94,10 +94,9 @@
         },
         "scsTemplate": "[variables('scsTemplates')[string(parameters('createXSCS'))]]",
         "ersTemplate": "[variables('ersTemplates')[string(parameters('createXSCS'))]]",
-        "dbTemplate": "[variables('dbTemplates')[string(parameters('createDB'))]]"        
+        "dbTemplate": "[variables('dbTemplates')[string(parameters('createDB'))]]"
     },
-    "resources": [
-        {
+    "resources": [{
             "apiVersion": "2017-05-10",
             "name": "[concat(variables('nestedDeploymentNameLBSCS'), '0')]",
             "type": "Microsoft.Resources/deployments",
