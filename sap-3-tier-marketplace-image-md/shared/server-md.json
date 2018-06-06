@@ -182,12 +182,7 @@
         "type": "[variables('cseExtName')]",
         "typeHandlerVersion": "[variables('cseExtVersion')]",
         "autoUpgradeMinorVersion": true,
-        "settings": {
-          "fileUris": [
-            "[parameters('csExtensionScript')]"
-          ],
-          "commandToExecute": "[concat(parameters('csExtensionscriptCall'), ' ', parameters('csExtensionscriptArgs'))]"
-        }
+        "settings": {}
       }
     }
   ]
