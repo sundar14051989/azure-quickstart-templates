@@ -157,7 +157,15 @@
     "imageOffer": "[variables('images')[parameters('osType')].offer]",
     "imageVersion": "[variables('images')[parameters('osType')].version]",
     "internalOSType": "[variables('images')[parameters('osType')].OSType]",
-    "csExtension": {},
+    "csExtension": {
+      "Windows": {	
+-        "script": "[concat(parameters('_artifactsLocation'), '/shared/noop.ps1', parameters('_artifactsLocationSasToken'))]",	
+-        "scriptCall": "powershell.exe -ExecutionPolicy bypass -File .\\shared\\noop.ps1"	
+-      },	
+-      "Linux": {	
+-        "script": "[concat(parameters('_artifactsLocation'), '/shared/noop.sh', parameters('_artifactsLocationSasToken'))]",	
+-        "scriptCall": "sh noop.sh"
+    },
     "vmSizes": {
       "Demo": {
         "Not HA": {
