@@ -72,7 +72,7 @@
       "metadata": {
         "description": "Availability set."
       }
-    },    
+    },
     "useAVSet": {
       "type": "bool",
       "defaultValue": false,
@@ -101,8 +101,8 @@
   },
   "variables": {
     "availableAVSetObj": {
-        "true": "[parameters('avSetObj')]",
-        "false": null
+      "true": "[parameters('avSetObj')]",
+      "false": null
     },
     "internalAVSetObj": "[variables('availableAVSetObj')[toLower(string(parameters('useAVSet')))]]",
     "csExtension": {
@@ -124,11 +124,9 @@
       "vmSize": "[parameters('vmSize')]"
     },
     "networkProfile": {
-      "networkInterfaces": [
-        {
-          "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('nicName'))]"
-        }
-      ]
+      "networkInterfaces": [{
+        "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('nicName'))]"
+      }]
     },
     "availableProperties": {
       "image": {
@@ -173,8 +171,7 @@
     },
     "internalProperties": "[variables('availableProperties')[parameters('osDiskType')]]"
   },
-  "resources": [
-    {
+  "resources": [{
       "type": "Microsoft.Compute/virtualMachines",
       "name": "[parameters('vmName')]",
       "apiVersion": "2017-03-30",
@@ -194,12 +191,7 @@
         "type": "[variables('cseExtName')]",
         "typeHandlerVersion": "[variables('cseExtVersion')]",
         "autoUpgradeMinorVersion": true,
-        "settings": {
-          "fileUris": [
-            "[parameters('csExtensionScript')]"
-          ],
-          "commandToExecute": "[concat(parameters('csExtensionscriptCall'), ' ', parameters('csExtensionscriptArgs'))]"
-        }
+        "settings": {}
       }
     }
   ]
